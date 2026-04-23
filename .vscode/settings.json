@@ -1,0 +1,16 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "tailwindCSS.includeLanguages": {
+    "blade": "html",
+    "php": "html"
+  },
+  "tailwindCSS.experimental.classRegex": [
+    "\\$?[a-zA-Z0-9_]+\\s*=\\s*['\"]([^'\"]*)['\"]",
+    "=>\\s*['\"]([^'\"]*)['\"]",
+    "class(?:es)?\\s*=>\\s*['\"]([^'\"]*)['\"]"
+  ],
+  "editor.quickSuggestions": {
+    "strings": "on"
+  }
+}

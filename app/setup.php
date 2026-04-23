@@ -161,3 +161,37 @@ add_action('widgets_init', function () {
         'id' => 'sidebar-footer',
     ] + $config);
 });
+
+/**
+ * Enqueue theme assets.
+ *
+ * @return void
+ */
+add_action('wp_enqueue_scripts', function () {
+    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Display:ital@0;1&display=swap', [], null);
+}, 100);
+
+/**
+ * Enqueue block editor assets.
+ *
+ * @return void
+ */
+add_action('enqueue_block_editor_assets', function () {
+    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Display:ital@0;1&display=swap', [], null);
+}, 100);
+
+/**
+ * Add preconnect resource hints for Google Fonts.
+ *
+ * @param  array  $urls
+ * @param  string $relation_type
+ * @return array
+ */
+add_filter('wp_resource_hints', function ($urls, $relation_type) {
+    if ($relation_type === 'preconnect') {
+        $urls[] = 'https://fonts.googleapis.com';
+        $urls[] = ['href' => 'https://fonts.gstatic.com', 'crossorigin' => 'anonymous'];
+    }
+
+    return $urls;
+}, 10, 2);

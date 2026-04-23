@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 import laravel from 'laravel-vite-plugin';
 import { wordpressPlugin, wordpressThemeJson } from '@roots/vite-plugin';
+import fs from 'fs';
 
 // Set APP_URL if it doesn't exist for Laravel Vite plugin
 if (!process.env.APP_URL) {
@@ -9,6 +10,13 @@ if (!process.env.APP_URL) {
 }
 
 export default defineConfig({
+  server: {
+    host: 'pereirabraga.local',
+    https: {
+      key: fs.readFileSync('/Users/renon/Library/Application Support/Local/run/router/nginx/certs/pereirabraga.local.key'),
+      cert: fs.readFileSync('/Users/renon/Library/Application Support/Local/run/router/nginx/certs/pereirabraga.local.crt'),
+    },
+  },
   base: '/app/themes/sage/public/build/',
   plugins: [
     tailwindcss(),
