@@ -1,4 +1,4 @@
-<section {{ $attributes->merge(['class' => 'bg-[#061125]']) }}>
+<section {{ $attributes->merge(['class' => '']) }}>
     <div class="about-container">
         
         <div class="about-media-column">

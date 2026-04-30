@@ -16,8 +16,8 @@ class HeroBlock extends Block
     {
         return [
             'title' => get_field('title') ?: 'Transformar realidades.',
-            'subtitle' => get_field('subtitle') ?: 'Encontramos a solução ideal para você.',
-            'cta_text' => get_field('cta_text') ?: 'Como podemos ajudar hoje? →',
+            'subtitle' => get_field('subtitle') ?: 'Devolvendo dignidade a famílias vulneráveis e trabalhadores acidentados.',
+            'cta_link' => get_field('cta_link') ?: ['url' => '#', 'title' => 'Como podemos ajudar hoje?', 'target' => ''],
             'cards' => get_field('cards') ?: [
                 ['title' => 'Auxílio Acidente', 'category' => 'INSS', 'image' => null],
                 ['title' => 'Benefício Autista', 'category' => 'CRIANÇA', 'image' => null],
@@ -30,9 +30,21 @@ class HeroBlock extends Block
         $fields = Builder::make('hero_block');
 
         $fields
-            ->addText('title')
-            ->addText('subtitle')
-            ->addText('cta_text')
+            ->addWysiwyg('title', [
+                'label' => 'Título',
+                'tabs' => 'visual',
+                'toolbar' => 'simple',
+                'media_upload' => 0
+            ])
+            ->addWysiwyg('subtitle', [
+                'label' => 'Subtítulo',
+                'tabs' => 'visual',
+                'toolbar' => 'simple',
+                'media_upload' => 0
+            ])
+            ->addLink('cta_link', [
+                'label' => 'CTA Link'
+            ])
             ->addRepeater('cards')
                 ->addText('title')
                 ->addText('category')
