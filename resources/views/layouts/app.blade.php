@@ -17,7 +17,7 @@
         {{ __('Skip to content', 'sage') }}
       </a>
 
-      @include('sections.header')
+      {{-- @include('sections.header') --}}
 
       <main id="main" class="main">
         @yield('content')
@@ -29,7 +29,7 @@
         </aside>
       @endif
 
-      @include('sections.footer')
+      {{-- @include('sections.footer') --}}
     </div>
 
     @php(do_action('get_footer'))

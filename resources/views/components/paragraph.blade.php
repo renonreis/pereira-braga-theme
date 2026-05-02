@@ -4,7 +4,7 @@
 ])
 
 @php
-$base = "font-['Montserrat'] text-[19px] font-style-normal font-weight-normal leading-[35px]";
+$base = "font-['Montserrat'] md:text-[19px] font-style-normal font-weight-normal leading-[35px]";
 $mergedAttributes = $attributes->merge(['class' => $base]);
 @endphp
 
