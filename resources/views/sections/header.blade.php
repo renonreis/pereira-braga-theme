@@ -25,10 +25,11 @@
                     </button>
                 </div>
 
-                <div class="min-h-0 flex-1 overflow-y-auto px-5 pb-8 pt-2 md:flex-none md:overflow-visible md:p-0">
+                <div
+                    class="flex flex-row items-center justify-end gap-12 overflow-y-auto px-5 pb-8 pt-2 md:flex md:flex-row md:overflow-visible md:p-0">
                     {!! wp_nav_menu([
                         'theme_location' => 'primary_navigation',
-                        'container_class' => 'w-full',
+                        'container_class' => 'w-auto',
                         'menu_class' =>
                             'flex w-full flex-col items-stretch gap-0 text-left md:flex-row md:items-center md:justify-end md:gap-12',
                         'add_li_class' =>
@@ -36,6 +37,13 @@
                         'add_a_class' => 'block no-underline!',
                         'echo' => false,
                     ]) !!}
+
+                    <x-button variant="outline" asChild class="w-full md:w-auto">
+                        <a href="#">
+                            Fale conosco
+                            <x-icons.whatsapp />
+                        </a>
+                    </x-button>
                 </div>
             </nav>
 

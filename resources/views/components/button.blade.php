@@ -1,11 +1,12 @@
 @props([
+    'asChild' => false,
     'type' => 'button',
     'variant' => 'blue',
 ])
 
 @php
     $base =
-        'inline-flex gap-3 py-4 px-8 rounded-[5px] cursor-pointer text-[14px] font-normal leading-none tracking-[4.2px] uppercase transition ease-in-out duration-300 box-border justify-center items-center';
+        'inline-flex gap-3 py-4 px-8 rounded-[5px] cursor-pointer text-[14px] font-normal leading-none tracking-[4.2px] uppercase transition ease-in-out duration-300 box-border justify-center items-center no-underline';
 
     $class = match ($variant) {
         'outline'
@@ -14,8 +15,15 @@
         'dark'
             => 'border-2 border-transparent border-solid bg-[#030A15] text-[#92A8CC] hover:border-[#030A15] hover:bg-transparent hover:text-[#030A15]',
     };
+    $mergedAttributes = $attributes->merge(['class' => "{$base} {$class}"]);
 @endphp
 
-<button type="{{ $type }}" {{ $attributes->merge(['class' => "{$base} {$class}"]) }}>
-    {{ $slot }}
-</button>
+@if ($asChild)
+    <x-internal.slot :merged-attributes="$mergedAttributes">
+        {{ $slot }}
+    </x-internal.slot>
+@else
+    <button type="{{ $type }}" {{ $mergedAttributes }}>
+        {{ $slot }}
+    </button>
+@endif

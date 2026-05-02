@@ -28,7 +28,7 @@
     </div>
 </section>
 
-<section class="bg-[#061125] pt-12 pb-12 md:pb-24">
+<section id="sobre" class="bg-[#061125] pt-12 pb-12 md:pb-24">
     <div class="grid grid-cols-1 md:gap-[18px] md:grid-cols-2 max-w-[1280px] mx-auto px-5 md:px-10">
         <div class="flex justify-center mb-5 md:m-0">
             <img class="w-auto" src="https://picsum.photos/seed/picsum/473/520" width="473" height="520" />
@@ -80,7 +80,7 @@
     </div>
 </section>
 
-<section class="relative bg-[#061125] pt-16 pb-16 md:pt-24 md:pb-4 overflow-hidden">
+<section id="equipe" class="relative bg-[#061125] pt-16 pb-16 md:pt-24 md:pb-4 overflow-hidden">
     <div class="max-w-[1280px] mx-auto px-5 md:px-10">
         <x-heading as="h2" class="mb-8 text-white! text-center">
             Nossa equipe
