@@ -7,12 +7,12 @@
 $base = "font-['Noto_Serif_Display']";
 
 $class = match ($as) {
-    'h1' => 'text-2xl md:text-[64px]',
-    'h2' => 'text-2xl md:text-4xl',
-    'h3' => 'text-xl md:text-3xl',
-    'h4' => 'text-lg md:text-2xl',
-    'h5' => 'text-base md:text-xl',
-    'h6' => 'text-base md:text-xl',
+    'h1' => 'text-5xl md:text-[64px]',
+    'h2' => 'text-4xl md:text-5xl',
+    'h3' => 'text-3xl md:text-4xl',
+    'h4' => 'text-2xl md:text-3xl',
+    'h5' => 'text-xl md:text-2xl',
+    'h6' => 'text-lg md:text-xl',
     default => '',
 };
 @endphp

@@ -12,7 +12,7 @@
             => 'border-2 border-[#2E436A] border-solid text-[#92A8CC] hover:border-transparent hover:bg-[#324870]/39',
         'blue' => 'border-2 border-transparent border-solid bg-[#324870]/39 hover:border-[#2E436A] text-[#92A8CC]',
         'dark'
-            => 'border-2 border-transparent border-solid bg-[#030A15] text-[#92A8CC] hover:border-[#030A15] hover:bg-transparent',
+            => 'border-2 border-transparent border-solid bg-[#030A15] text-[#92A8CC] hover:border-[#030A15] hover:bg-transparent hover:text-[#030A15]',
     };
 @endphp
 
