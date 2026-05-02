@@ -5,7 +5,7 @@
 
 @php
     $base =
-        'inline-flex gap-3 py-4 px-8 rounded-[5px] cursor-pointer text-[14px] font-normal leading-none tracking-[4.2px] uppercase transition ease-in-out duration-300 box-border justify-center';
+        'inline-flex gap-3 py-4 px-8 rounded-[5px] cursor-pointer text-[14px] font-normal leading-none tracking-[4.2px] uppercase transition ease-in-out duration-300 box-border justify-center items-center';
 
     $class = match ($variant) {
         'outline'

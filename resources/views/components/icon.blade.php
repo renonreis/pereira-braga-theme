@@ -20,4 +20,8 @@
     @case('google')
         <x-icons.google {{ $attributes }} />
     @break
+
+    @case('close')
+        <x-icons.close {{ $attributes }} />
+    @break
 @endswitch

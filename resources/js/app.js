@@ -145,9 +145,113 @@ function initTeamCarousels() {
   });
 }
 
+function initMobileNav() {
+  const header = document.querySelector('[data-site-header]');
+  const toggle = document.querySelector('[data-menu-toggle]');
+  const nav = document.getElementById('primary-navigation');
+  if (!header || !toggle || !nav) return;
+
+  const closeBtn = nav.querySelector('[data-menu-close]');
+  const backdrop = header.querySelector('[data-drawer-backdrop]');
+  const mq = window.matchMedia('(min-width: 768px)');
+  let wasDesktop = mq.matches;
+  let resizeRaf = 0;
+
+  function setOpen(open) {
+    header.setAttribute('data-mobile-nav', open ? 'open' : 'closed');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.documentElement.classList.toggle('overflow-hidden', open);
+  }
+
+  function close() {
+    setOpen(false);
+  }
+
+  /**
+   * matchMedia('change') pode correr depois do reflow — o browser já animou.
+   * `transition: none` inline + reflow garante salto instantâneo ao mudar viewport.
+   */
+  function withDrawerTransitionSuppressed(run) {
+    nav.style.setProperty('transition', 'none');
+    backdrop?.style.setProperty('transition', 'none');
+    header.setAttribute('data-nav-drawer-hydrated', 'false');
+    run();
+    void nav.offsetHeight;
+    nav.style.removeProperty('transition');
+    backdrop?.style.removeProperty('transition');
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        header.setAttribute('data-nav-drawer-hydrated', 'true');
+      });
+    });
+  }
+
+  function onBreakpointCross() {
+    const isDesktop = mq.matches;
+    if (isDesktop === wasDesktop) return;
+    withDrawerTransitionSuppressed(() => {
+      close();
+    });
+    wasDesktop = isDesktop;
+  }
+
+  toggle.addEventListener('click', () => {
+    if (header.getAttribute('data-mobile-nav') === 'open') return;
+    setOpen(true);
+  });
+
+  closeBtn?.addEventListener('click', () => {
+    close();
+  });
+
+  mq.addEventListener('change', onBreakpointCross);
+
+  window.addEventListener(
+    'resize',
+    () => {
+      if (resizeRaf) cancelAnimationFrame(resizeRaf);
+      resizeRaf = requestAnimationFrame(() => {
+        resizeRaf = 0;
+        onBreakpointCross();
+      });
+    },
+    { passive: true },
+  );
+
+  withDrawerTransitionSuppressed(() => {
+    close();
+  });
+}
+
+function initSiteHeaderScroll() {
+  const header = document.querySelector('[data-site-header]');
+  if (!header) return;
+
+  const threshold = 8;
+  let ticking = false;
+
+  function update() {
+    ticking = false;
+    const scrolled = window.scrollY > threshold;
+    header.setAttribute('data-header-scrolled', scrolled ? 'true' : 'false');
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  update();
+}
+
 function init() {
   initCounters();
   initTeamCarousels();
+  initSiteHeaderScroll();
+  initMobileNav();
 }
 
 if (document.readyState === 'loading') {

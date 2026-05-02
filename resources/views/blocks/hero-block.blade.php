@@ -1,11 +1,12 @@
-<section {{ $attributes->merge(['class' => 'bg-[#061125] pt-12 md:pt-24 pb-12']) }}>
-    <div class="hero-container grid grid-cols-1 md:gap-[18px] md:grid-cols-5 max-w-[1280px] mx-auto px-5 md:px-10">
+<section {{ $attributes->merge(['class' => 'bg-[#061125] pt-[93px] md:pt-[117px] md:pb-24 pb-12']) }}>
+    <div
+        class="hero-container grid grid-cols-1 md:gap-[18px] md:grid-cols-5 max-w-[1280px] mx-auto px-5 md:px-10 md:pt-24">
         <div
             class="absolute w-[732px] h-[732px] rounded-full bg-[#1B365E] blur-[279.75px] top-[-50%] right-0 md:left-0 pointer-events-none">
         </div>
 
         <div class="hero-content relative flex items-center col-span-2">
-            <div class="text-center md:text-left py-12 px-2">
+            <div class="text-center md:text-left py-12">
                 <x-heading asChild class="text-white!">{!! $title !!}</x-heading>
                 <x-paragraph asChild class="hero-subtitle mt-5 text-[#92A8CC] mb-3">
                     {!! $subtitle !!}
@@ -110,7 +111,7 @@
         </x-paragraph>
 
         <div
-            class="flex flex-nowrap snap-x snap-mandatory touch-pan-x overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:col-span-3 md:grid md:grid-cols-3 gap-5 -mx-5 px-6 scroll-px-5 scroll-smooth">
+            class="flex flex-nowrap snap-x snap-mandatory touch-pan-x overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:col-span-3 md:grid md:grid-cols-3 gap-5 -mx-5 px-5 scroll-px-5 scroll-smooth">
             <x-card-testimonial variant="google" name="Jaqueline Ramos" date="04/11/2025" :rating="5"
                 initials="JR"
                 quote="Os melhores advogados que já tive. Muito atenciosos e super confiáveis. Depois da perícia, foram apenas 26 dias para ser aprovado o BP."
