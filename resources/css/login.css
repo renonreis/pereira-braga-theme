@@ -1,0 +1,65 @@
+#login {
+  width: 100%;
+  max-width: 400px;
+}
+
+.bg-grey {
+  background-color: #eaeaea;
+}
+
+.login {
+  background-color: #eaeaea;
+}
+
+.login label {
+  color: #232e37;
+  font-size: 16px;
+}
+
+.login form {
+  background-color: #eaeaea;
+  border: none;
+  box-shadow: none;
+}
+
+.login form .input,
+.login form input[type='checkbox'],
+.login input[type='text'] {
+  background-color: #eaeaea;
+  border-color: #232e37;
+  color: #232e37;
+  font-size: 18px;
+}
+
+.login h1 a {
+  background-image: url(./../images/connectplug.png);
+  background-position: center;
+  background-size: auto;
+  width: 100%;
+}
+
+.login input[type='text']:focus,
+.login input[type='password']:focus {
+  border-color: #00aff2;
+  box-shadow: 0 0 0 1px #00aff2;
+}
+
+.login .button.wp-hide-pw .dashicons {
+  color: #00aff2;
+}
+
+.login .button-primary {
+  background: #00aff2;
+  border-color: #00aff2;
+}
+
+.login .button-primary:hover {
+  background: #00aff2;
+  border-color: #00aff2;
+}
+
+p#nav a,
+p#backtoblog a,
+a.privacy-policy-link {
+  color: #232e37 !important;
+}

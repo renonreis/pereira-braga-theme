@@ -170,6 +170,12 @@ add_action('widgets_init', function () {
  */
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Display:ital@0;1&display=swap', [], null);
+
+    // wp_dequeue_style('wp-block-library');
+    wp_dequeue_style('wp-block-library-theme');
+    wp_dequeue_style('classic-theme-styles');
+    wp_dequeue_style('wc-block-style');
+    wp_dequeue_style('global-styles');
 }, 100);
 
 /**
@@ -196,3 +202,17 @@ add_filter('wp_resource_hints', function ($urls, $relation_type) {
 
     return $urls;
 }, 10, 2);
+
+/**
+ * Enqueue login styles.
+ *
+ * @return void
+ */
+add_action('login_enqueue_scripts', function () {
+    wp_enqueue_style(
+        'sage/login',
+        Vite::asset('resources/css/login.css'),
+        [],
+        null
+    );
+});

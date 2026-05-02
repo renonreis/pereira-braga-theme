@@ -9,7 +9,7 @@ class HeroBlock extends Block
 {
     public $name = 'Hero Block';
     public $description = 'Seção inicial com título e cards de destaque.';
-    public $category = 'theme';
+    public $category = 'pereira-braga-blocks';
     public $icon = 'cover-image';
 
     public function with(): array
@@ -54,3 +54,8 @@ class HeroBlock extends Block
         return $fields->build();
     }
 }
+
+/**
+ * Remove favicon from theme options.
+ */
+add_filter('get_site_icon_url', '__return_false');

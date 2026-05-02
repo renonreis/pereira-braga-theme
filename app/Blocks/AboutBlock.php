@@ -9,7 +9,7 @@ class AboutBlock extends Block
 {
     public $name = 'About Block';
     public $description = 'Seção "Quem somos".';
-    public $category = 'theme';
+    public $category = 'pereira-braga-blocks';
     public $icon = 'info';
 
     public function with(): array

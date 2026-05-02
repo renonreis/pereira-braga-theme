@@ -13,8 +13,12 @@ export default defineConfig({
   server: {
     host: 'pereirabraga.local',
     https: {
-      key: fs.readFileSync('/Users/renon/Library/Application Support/Local/run/router/nginx/certs/pereirabraga.local.key'),
-      cert: fs.readFileSync('/Users/renon/Library/Application Support/Local/run/router/nginx/certs/pereirabraga.local.crt'),
+      key: fs.readFileSync(
+        '/Users/renon/Library/Application Support/Local/run/router/nginx/certs/pereirabraga.local.key',
+      ),
+      cert: fs.readFileSync(
+        '/Users/renon/Library/Application Support/Local/run/router/nginx/certs/pereirabraga.local.crt',
+      ),
     },
   },
   base: '/app/themes/sage/public/build/',
@@ -26,6 +30,7 @@ export default defineConfig({
         'resources/js/app.js',
         'resources/css/editor.css',
         'resources/js/editor.js',
+        'resources/css/login.css',
       ],
       refresh: true,
       assets: ['resources/images/**', 'resources/fonts/**'],

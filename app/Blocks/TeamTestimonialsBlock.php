@@ -9,7 +9,7 @@ class TeamTestimonialsBlock extends Block
 {
     public $name = 'Team Testimonials Block';
     public $description = 'Seção de membros da equipe e avaliações de clientes.';
-    public $category = 'theme';
+    public $category = 'pereira-braga-blocks';
     public $icon = 'groups';
 
     public function with(): array

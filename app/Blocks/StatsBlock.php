@@ -9,7 +9,7 @@ class StatsBlock extends Block
 {
     public $name = 'Stats Block';
     public $description = 'Números e estatísticas em destaque.';
-    public $category = 'theme';
+    public $category = 'pereira-braga-blocks';
     public $icon = 'chart-bar';
 
     public function with(): array
