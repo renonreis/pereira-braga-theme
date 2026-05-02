@@ -1,10 +1,10 @@
-<footer class="relative bg-[#FFFFFF] py-4">
+<footer class="relative bg-[#FFFFFF] pt-4">
     <div class="border-t border-[#4B648A]/50 w-full"></div>
-    <div class="text-center max-w-[1280px] mx-auto pt-16 pb-16 md:pt-20 md:pb-20 px-5 md:px-10">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+    <div class="text-center max-w-[1280px] mx-auto pt-16 pb-16 lg:pt-20 lg:pb-20 px-5 lg:px-10">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
             <div>
-                <x-icons.brand-dark class="mb-12 md:mb-20 mx-auto" />
-                <x-heading as="h4" class="mb-3 md:mb-6 italic!">
+                <x-icons.brand-dark class="mb-12 lg:mb-20 mx-auto" />
+                <x-heading as="h4" class="mb-3 lg:mb-6 italic!">
                     Siga-nos
                 </x-heading>
                 <div class="flex items-center justify-center gap-6">
@@ -26,14 +26,14 @@
                 </div>
             </div>
             <div>
-                <x-heading as="h4" class="mb-6 md:mb-5 italic! md:text-left">
+                <x-heading as="h4" class="mb-6 lg:mb-5 italic! lg:text-left">
                     Contato
                 </x-heading>
                 <ul class="flex flex-col gap-5">
-                    <li class="flex flex-row justify-center md:justify-start">
-                        <span class="flex flex-col md:flex-row items-center text-left gap-3">
+                    <li class="flex flex-row justify-center lg:justify-start">
+                        <span class="flex flex-col lg:flex-row items-center text-left gap-3">
                             <x-icons.phone class="text-[#92A8CC]" />
-                            <span class="flex flex-col items-center md:items-start">
+                            <span class="flex flex-col items-center lg:items-start">
                                 <x-paragraph class="text-[#293E59]! text-[14px]! font-semibold! leading-none!">
                                     Auxílio Acidente
                                 </x-paragraph>
@@ -44,10 +44,10 @@
                             </span>
                         </span>
                     </li>
-                    <li class="flex flex-row justify-center md:justify-start">
-                        <span class="flex flex-col md:flex-row items-center text-left gap-3">
+                    <li class="flex flex-row justify-center lg:justify-start">
+                        <span class="flex flex-col lg:flex-row items-center text-left gap-3">
                             <x-icons.phone class="text-[#92A8CC]" />
-                            <span class="flex flex-col items-center md:items-start">
+                            <span class="flex flex-col items-center lg:items-start">
                                 <x-paragraph class="text-[#293E59]! text-[14px]! font-semibold! leading-none!">
                                     Benefício para Autismo
                                 </x-paragraph>
@@ -58,10 +58,10 @@
                             </span>
                         </span>
                     </li>
-                    <li class="flex flex-row justify-center md:justify-start">
-                        <span class="flex flex-col md:flex-row items-center text-left gap-3">
+                    <li class="flex flex-row justify-center lg:justify-start">
+                        <span class="flex flex-col lg:flex-row items-center text-left gap-3">
                             <x-icons.email class="text-[#92A8CC]" />
-                            <span class="flex flex-col items-center md:items-start">
+                            <span class="flex flex-col items-center lg:items-start">
                                 <x-paragraph class="text-[#293E59]! text-[14px]! font-semibold! leading-none!">
                                     E-mail
                                 </x-paragraph>
@@ -72,10 +72,10 @@
                             </span>
                         </span>
                     </li>
-                    <li class="flex flex-row justify-center md:justify-start">
-                        <span class="flex flex-col md:flex-row items-center text-left gap-3">
+                    <li class="flex flex-row justify-center lg:justify-start">
+                        <span class="flex flex-col lg:flex-row items-center text-left gap-3">
                             <x-icons.map-pin class="text-[#92A8CC]" />
-                            <span class="flex flex-col items-center md:items-start">
+                            <span class="flex flex-col items-center lg:items-start">
                                 <x-paragraph class="text-[#293E59]! text-[14px]! font-semibold! leading-none!">
                                     Endereço
                                 </x-paragraph>
@@ -89,19 +89,25 @@
                 </ul>
             </div>
             <div>
-                <x-heading as="h4" class="mb-6 md:mb-5 italic! md:text-left">
+                <x-heading as="h4" class="mb-6 lg:mb-5 italic! lg:text-left">
                     Navegação
                 </x-heading>
 
                 {!! wp_nav_menu([
                     'theme_location' => 'footer_navigation',
                     'container_class' => 'w-auto',
-                    'menu_class' => 'flex flex-col gap-5 md:text-left',
+                    'menu_class' => 'flex flex-col gap-5 lg:text-left',
                     'add_li_class' => 'text-[#293E59]! font-light! text-[16px]! leading-[30px] hover:underline!',
                     'add_a_class' => 'block no-underline!',
                     'echo' => false,
                 ]) !!}
             </div>
         </div>
+    </div>
+    <div class="copyright text-center px-5 py-12 border-t border-[#39455A]/50">
+        <x-paragraph
+            class="text-[#293E59]! text-[16px]! font-light! leading-[30px]! max-w-[240px] mx-auto lg:max-w-none">
+            Todos os direitos reservados a Pereira Braga Advogados
+        </x-paragraph>
     </div>
 </footer>

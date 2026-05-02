@@ -60,6 +60,10 @@ h6 {
   @apply text-lg md:text-xl;
 }
 
+img {
+  @apply object-cover object-center;
+}
+
 p {
   font-family: 'Montserrat', sans-serif;
   font-size: 19px;
