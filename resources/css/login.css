@@ -32,7 +32,7 @@
 }
 
 .login h1 a {
-  background-image: url(./../images/connectplug.png);
+  background-image: url(./../images/logo.png);
   background-position: center;
   background-size: auto;
   width: 100%;
@@ -40,22 +40,22 @@
 
 .login input[type='text']:focus,
 .login input[type='password']:focus {
-  border-color: #00aff2;
-  box-shadow: 0 0 0 1px #00aff2;
+  border-color: #061125;
+  box-shadow: 0 0 0 1px #061125;
 }
 
 .login .button.wp-hide-pw .dashicons {
-  color: #00aff2;
+  color: #061125;
 }
 
 .login .button-primary {
-  background: #00aff2;
-  border-color: #00aff2;
+  background: #061125;
+  border-color: #061125;
 }
 
 .login .button-primary:hover {
-  background: #00aff2;
-  border-color: #00aff2;
+  background: #061125;
+  border-color: #061125;
 }
 
 p#nav a,

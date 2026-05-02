@@ -1,5 +1,9 @@
-  <section {{ $attributes->merge(['id' => 'sobre', 'class' => 'bg-[#061125] pt-12 pb-12 lg:pb-24']) }}>
-      <div class="grid grid-cols-1 lg:gap-[18px] lg:grid-cols-2 max-w-[1280px] mx-auto px-5 lg:px-10">
+  <section {{ $attributes->merge(['id' => 'sobre', 'class' => 'relative bg-[#061125] pt-12 pb-12 lg:pb-24']) }}>
+      <div
+          class="absolute w-[732px] h-[732px] rounded-full bg-[#1B365E] blur-[279.75px] bottom-[-293px] right-0 lg:right-[-267px] pointer-events-none z-0">
+      </div>
+
+      <div class="relative grid grid-cols-1 lg:gap-[18px] lg:grid-cols-2 max-w-[1280px] mx-auto px-5 lg:px-10">
           <div class="flex justify-center mb-5 lg:m-0">
               <img class="w-auto" src="https://picsum.photos/seed/picsum/473/520" width="473" height="520" />
           </div>

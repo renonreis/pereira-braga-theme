@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Vite;
  * @return array
  */
 add_filter('block_editor_settings_all', function ($settings) {
-    $style = Vite::asset('resources/css/editor.css');
+    $editorStyle = Vite::asset('resources/css/editor.css');
 
     $settings['styles'][] = [
-        'css' => "@import url('{$style}')",
+        'css' => "@import url('{$editorStyle}')",
     ];
 
     return $settings;
@@ -185,6 +185,9 @@ add_action('wp_enqueue_scripts', function () {
  */
 add_action('enqueue_block_editor_assets', function () {
     wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Display:ital@0;1&display=swap', [], null);
+
+    $editorStyle = Vite::asset('resources/css/editor.css');
+    wp_enqueue_style('editor', $editorStyle, [], null);
 }, 100);
 
 /**

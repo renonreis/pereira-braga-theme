@@ -1,1 +1,9 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+.block-editor__container img {
+  height: stretch;
+}
+
+.block-editor-block-list__block {
+  overflow: auto;
+}
