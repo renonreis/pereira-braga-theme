@@ -85,6 +85,7 @@ add_action('after_setup_theme', function () {
      */
     register_nav_menus([
         'primary_navigation' => __('Menu Principal', 'sage'),
+        'footer_navigation' => __('Menu Rodapé', 'sage'),
     ]);
 
     /**

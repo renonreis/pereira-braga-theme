@@ -37,13 +37,6 @@
                         'add_a_class' => 'block no-underline!',
                         'echo' => false,
                     ]) !!}
-
-                    <x-button variant="outline" asChild class="w-full md:w-auto">
-                        <a href="#">
-                            Fale conosco
-                            <x-icons.whatsapp />
-                        </a>
-                    </x-button>
                 </div>
             </nav>
 
