@@ -5,10 +5,10 @@ namespace App\Blocks;
 use Log1x\AcfComposer\Block;
 use Log1x\AcfComposer\Builder;
 
-class TeamBlock extends Block
+class TeamTestimonialsBlock extends Block
 {
-    public $name = 'Team Block';
-    public $description = 'Seção de membros da equipe.';
+    public $name = 'Team Testimonials Block';
+    public $description = 'Seção de membros da equipe e avaliações de clientes.';
     public $category = 'theme';
     public $icon = 'groups';
 
@@ -28,7 +28,7 @@ class TeamBlock extends Block
 
     public function fields(): array
     {
-        $fields = Builder::make('team_block');
+        $fields = Builder::make('team_testimonials_block');
 
         $fields
             ->addText('title')
