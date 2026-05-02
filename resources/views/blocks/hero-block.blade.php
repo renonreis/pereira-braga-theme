@@ -2,7 +2,7 @@
     <div
         class="hero-container grid grid-cols-1 lg:gap-[18px] lg:grid-cols-5 max-w-[1280px] mx-auto px-5 lg:px-10 lg:pt-24">
         <div
-            class="absolute w-[732px] h-[732px] rounded-full bg-[#1B365E] blur-[279.75px] top-[-50%] right-0 lg:left-0 pointer-events-none">
+            class="absolute w-[732px] h-[732px] rounded-full bg-[#1B365E] blur-[279.75px] top-[-50%] right-0 lg:left-0 user-select-none pointer-events-none">
         </div>
 
         <div class="hero-content relative flex justify-center items-center col-span-2">
