@@ -12,10 +12,10 @@
 
     <div class="relative z-10 border-y border-[#FFFFFF]/50">
         <div class="max-w-[1280px] mx-auto px-5 pt-16 pb-16 text-center lg:px-10 lg:pt-20 lg:pb-20">
-            <x-heading as="h2" class="mb-4 text-white!">
+            <x-heading as="h2" class="pb-4 text-white!">
                 Você pode ter um benefício e não saber
             </x-heading>
-            <x-paragraph class="mb-5 text-center text-white">
+            <x-paragraph class="pb-5 text-center text-white">
                 Nossa equipe está pronta para analisar seu caso e te orientar da forma correta.
             </x-paragraph>
 

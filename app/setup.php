@@ -18,6 +18,7 @@ add_filter('block_editor_settings_all', function ($settings) {
 
     $settings['styles'][] = [
         'css' => "@import url('{$editorStyle}')",
+        'id' => 'style-editor',
     ];
 
     return $settings;
@@ -137,6 +138,13 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/reference/functions/add_theme_support/#customize-selective-refresh-widgets
      */
     add_theme_support('customize-selective-refresh-widgets');
+
+    /**
+     * Enable editor styles.
+     *
+     * @link https://developer.wordpress.org/reference/functions/add_theme_support/#editor-styles
+     **/
+    add_theme_support('editor-styles');
 }, 20);
 
 /**
@@ -171,10 +179,13 @@ add_action('widgets_init', function () {
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Display:ital@0;1&display=swap', [], null);
 
-    // wp_dequeue_style('wp-block-library');
+    $editorStyle = Vite::asset('resources/css/editor.css');
+    wp_enqueue_style('editor', $editorStyle, [], null);
+
+    wp_dequeue_style('wp-block-library');
     wp_dequeue_style('wp-block-library-theme');
-    wp_dequeue_style('classic-theme-styles');
-    wp_dequeue_style('wc-block-style');
+    wp_dequeue_style('wp-classic-theme-styles');
+    wp_dequeue_style('wc-blocks-style');
     wp_dequeue_style('global-styles');
 }, 100);
 
@@ -186,8 +197,12 @@ add_action('wp_enqueue_scripts', function () {
 add_action('enqueue_block_editor_assets', function () {
     wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Display:ital@0;1&display=swap', [], null);
 
-    $editorStyle = Vite::asset('resources/css/editor.css');
-    wp_enqueue_style('editor', $editorStyle, [], null);
+    // wp_deregister_style('wp-block-library');
+    // wp_deregister_style('wp-edit-blocks');
+    wp_deregister_style('wp-block-library-theme');
+    wp_deregister_style('wp-classic-theme-styles');
+    wp_deregister_style('wc-blocks-style');
+    wp_deregister_style('global-styles');
 }, 100);
 
 /**

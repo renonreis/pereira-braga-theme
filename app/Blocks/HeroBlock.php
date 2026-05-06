@@ -17,7 +17,7 @@ class HeroBlock extends Block
         return [
             'title' => get_field('title') ?: 'Transformar realidades.',
             'subtitle' => get_field('subtitle') ?: 'Devolvendo dignidade a famílias vulneráveis e trabalhadores acidentados.',
-            'cta_link' => get_field('cta_link') ?: ['url' => '#', 'title' => 'Como podemos ajudar hoje?', 'target' => ''],
+            'suffix' => get_field('suffix') ?: 'Como podemos ajudar hoje?',
             'cards' => get_field('cards') ?: [
                 ['title' => 'Auxílio Acidente', 'category' => 'INSS', 'image' => null],
                 ['title' => 'Benefício Autista', 'category' => 'CRIANÇA', 'image' => null],
@@ -42,8 +42,11 @@ class HeroBlock extends Block
                 'toolbar' => 'simple',
                 'media_upload' => 0
             ])
-            ->addLink('cta_link', [
-                'label' => 'CTA Link'
+            ->addText('suffix', [
+                'label' => 'Texto de destaque',
+                'tabs' => 'visual',
+                'toolbar' => 'simple',
+                'media_upload' => 0
             ])
             ->addRepeater('cards')
                 ->addText('title')

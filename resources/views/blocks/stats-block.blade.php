@@ -11,7 +11,7 @@
       </div>
 
       <div class="relative z-10 max-w-[1280px] mx-auto px-5 lg:px-10">
-          <x-heading as="h2" class="mb-10 text-center">
+          <x-heading as="h2" class="pb-10 text-center">
               Quem somos
           </x-heading>
 
