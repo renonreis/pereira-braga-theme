@@ -3,7 +3,6 @@
     'prefix' => 'Dr.',
     'name' => '',
     'imageSrc' => 'https://picsum.photos/seed/picsum/345/600',
-    'imageAlt' => '',
 ])
 
 @php
@@ -27,9 +26,12 @@
             'group snap-start snap-always flex flex-col w-full max-w-[270px] min-h-[465px] md:max-w-[345px] md:min-h-[600px] p-5 rounded-[5px] relative overflow-hidden cursor-pointer',
     ]) }}>
     <div class="absolute inset-0 bg-[lightgray]">
-        <img class="w-full h-full object-cover object-center transition-transform duration-700" src="{{ $imageSrc }}"
-            alt="{{ $imageAlt }}">
-        {{-- <div class="absolute inset-0 bg-gradient-to-b from-white to-white/0 to-[50%]"></div> --}}
+        @if ($imageSrc)
+            <img class="w-full h-full object-cover object-center transition-transform duration-700"
+                src="{{ $imageSrc }}">
+        @endif
+
+        <div class="absolute inset-0 bg-gradient-to-b from-white to-white/0 to-[50%]"></div>
         <div class="absolute inset-0 bg-gradient-to-b from-[#142A4B]/0 to-[#0F192B]/85"></div>
 
         <div class="{{ $scheme['overlayBurn'] }}"></div>
@@ -43,7 +45,9 @@
                 <x-paragraph class="text-white mb-0!">{{ $prefix }}</x-paragraph>
             @endif
             @if ($name)
-                <x-heading class="text-white! text-[44px]! pb-2 italic!">{{ $name }}</x-heading>
+                <x-heading class="text-white! text-[44px]! pb-2 italic! max-w-[200px]">
+                    {{ $name }}
+                </x-heading>
             @endif
         </div>
     </div>

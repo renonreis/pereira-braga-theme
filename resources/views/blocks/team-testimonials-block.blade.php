@@ -21,49 +21,63 @@
 
     <div class="relative z-10">
         <div class="max-w-[1280px] mx-auto px-5 lg:px-10">
-            <x-heading as="h2" class="pb-8 text-white! text-center">
-                Nossa equipe
-            </x-heading>
-            <x-paragraph class="text-[#92A8CC] pb-14 text-center">
-                Uma equipe experiente e comprometida, preparada para analisar o seu caso com atenção, clareza e a
-                estratégia
-                necessária para buscar o seu direito.
-            </x-paragraph>
+            <div class="flex flex-col items-center">
+                @if ($team['title'])
+                    <x-heading as="h2" asChild class="pb-8 text-white! text-center">
+                        {!! $team['title'] !!}
+                    </x-heading>
+                @endif
+                @if ($team['subtitle'])
+                    <x-paragraph class="text-[#92A8CC] pb-14 text-center max-w-[995px] mx-auto">
+                        {!! $team['subtitle'] !!}
+                    </x-paragraph>
+                @endif
+            </div>
         </div>
-
-        @php($teamCarouselCount = 9)
 
         <div class="team-carousel overflow-hidden px-5" data-team-carousel data-team-marquee-seconds="50">
             <div class="team-carousel-track flex w-max flex-nowrap gap-5" data-team-carousel-track>
-                @for ($i = 0; $i < $teamCarouselCount; $i++)
-                    <x-card-team variant="blue" prefix="Dr." name="Gabriel Marinho" class="shrink-0" />
-                @endfor
+                @foreach ($team['team_members'] as $member)
+                    @php
+                        $image = $member['image'] ?? null;
+                        $imageUrl = null;
+
+                        if (is_array($image)) {
+                            $imageUrl = $image['url'] ?? null;
+                        } elseif (is_numeric($image)) {
+                            $imageUrl = wp_get_attachment_image_url((int) $image, 'full') ?: null;
+                        } elseif (is_string($image) && filter_var($image, FILTER_VALIDATE_URL)) {
+                            $imageUrl = $image;
+                        }
+                    @endphp
+                    <x-card-team variant="blue" prefix="{{ $member['role'] }}" name="{{ $member['name'] }}"
+                        class="shrink-0" :imageSrc="$imageUrl" />
+                @endforeach
             </div>
         </div>
 
         <div class="max-w-[1280px] mx-auto px-5 lg:px-10 pt-12 lg:pt-24">
-            <x-heading as="h2" class="pb-8 text-white! text-center">
-                O que nossos clientes disseram
-            </x-heading>
-            <x-paragraph class="text-[#92A8CC] pb-14 text-center">
-                Veja as avaliações reais de quem já contou com a nossa ajuda
-                e entenda por que temos uma excelente reputação no Google.
-            </x-paragraph>
+            <div class="flex flex-col items-center">
+                @if ($testimonials['title'])
+                    <x-heading as="h2" asChild class="pb-8 text-white! text-center">
+                        {!! $testimonials['title'] !!}
+                    </x-heading>
+                @endif
+                @if ($testimonials['subtitle'])
+                    <x-paragraph class="text-[#92A8CC] pb-14 text-center max-w-[600px] mx-auto">
+                        {!! $testimonials['subtitle'] !!}
+                    </x-paragraph>
+                @endif
+            </div>
 
             <div
                 class="flex flex-nowrap snap-x snap-mandatory touch-pan-x overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:col-span-3 lg:grid lg:grid-cols-3 gap-5 -mx-5 px-5 scroll-px-5 scroll-smooth">
-                <x-card-testimonial variant="google" name="Jaqueline Ramos" date="04/11/2025" :rating="5"
-                    initials="JR"
-                    quote="Os melhores advogados que já tive. Muito atenciosos e super confiáveis. Depois da perícia, foram apenas 26 dias para ser aprovado o BP."
-                    href="#" />
-                <x-card-testimonial variant="google" name="Jaqueline Ramos" date="04/11/2025" :rating="5"
-                    initials="JR"
-                    quote="Os melhores advogados que já tive. Muito atenciosos e super confiáveis. Depois da perícia, foram apenas 26 dias para ser aprovado o BP."
-                    href="#" />
-                <x-card-testimonial variant="google" name="Jaqueline Ramos" date="04/11/2025" :rating="5"
-                    initials="JR"
-                    quote="Os melhores advogados que já tive. Muito atenciosos e super confiáveis. Depois da perícia, foram apenas 26 dias para ser aprovado o BP."
-                    href="#" />
+
+                @foreach ($testimonials['testimonials_items'] as $testimonial)
+                    <x-card-testimonial variant="google" author="{{ $testimonial['author'] }}"
+                        date="{{ $testimonial['date'] }}" rating="{{ $testimonial['rating'] }}"
+                        quote="{{ $testimonial['quote'] }}" href="{{ $testimonial['url'] }}" />
+                @endforeach
             </div>
         </div>
         <div class="pb-10 lg:pb-20 px-5 border-b border-[#FFFFFF]/50"></div>

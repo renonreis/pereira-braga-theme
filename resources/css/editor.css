@@ -11,6 +11,7 @@
 :where(.editor-styles-wrapper) p {
   margin-top: 0;
   margin-bottom: 0;
+  font-size: 19px;
 }
 
 :where(.editor-styles-wrapper) h1,

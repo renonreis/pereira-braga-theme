@@ -16,10 +16,10 @@ class CtaBannerBlock extends Block
     public function with(): array
     {
         return [
-            'title' => get_field('title') ?: 'Você pode ter um benefício e não saber',
-            'subtitle' => get_field('subtitle') ?: 'Nossa equipe está pronta para analisar seu caso e buscar os melhores direitos.',
-            'button_text' => get_field('button_text') ?: 'Fale com um especialista',
-            'button_link' => get_field('button_link') ?: '#',
+            'title' => get_field('title'),
+            'subtitle' => get_field('subtitle'),
+            'button_text' => get_field('button_text'),
+            'button_link' => get_field('button_link'),
         ];
     }
 
@@ -28,10 +28,30 @@ class CtaBannerBlock extends Block
         $fields = Builder::make('cta_banner_block');
 
         $fields
-            ->addText('title')
-            ->addText('subtitle')
-            ->addText('button_text')
-            ->addUrl('button_link');
+            ->addWysiwyg('title', [
+                'label' => 'Título',
+                'tabs' => 'visual',
+                'toolbar' => 'simple',
+                'media_upload' => 0
+            ])
+            ->addText('subtitle', [
+                'label' => 'Subtítulo',
+                'tabs' => 'visual',
+                'toolbar' => 'simple',
+                'media_upload' => 0
+            ])
+            ->addText('button_text', [
+                'label' => 'Texto do botão',
+                'tabs' => 'visual',
+                'toolbar' => 'simple',
+                'media_upload' => 0
+            ])
+            ->addUrl('button_link', [
+                'label' => 'Link do botão',
+                'tabs' => 'visual',
+                'toolbar' => 'simple',
+                'media_upload' => 0
+            ]);
 
         return $fields->build();
     }

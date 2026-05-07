@@ -20,7 +20,7 @@
 
         @include('sections.header')
 
-        <main id="main" class="main">
+        <main id="main" class="main relative z-2">
             @yield('content')
         </main>
 

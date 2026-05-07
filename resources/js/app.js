@@ -52,11 +52,21 @@ function initTeamCarousels() {
   document.querySelectorAll('[data-team-carousel]').forEach((root) => {
     const track = root.querySelector('[data-team-carousel-track]');
     if (!track) return;
+    if (track.dataset.teamCarouselReady === '1') return;
 
     const loopSeconds = Math.max(
       1,
       Number.parseFloat(root.dataset.teamMarqueeSeconds ?? '50', 10) || 50,
     );
+
+    const originalItems = Array.from(track.children);
+    if (originalItems.length === 0) return;
+    originalItems.forEach((item) => {
+      const clone = item.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      track.appendChild(clone);
+    });
+    track.dataset.teamCarouselReady = '1';
 
     let position = 0;
     let loopWidth = 0;

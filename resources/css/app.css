@@ -36,6 +36,19 @@ h6 {
   }
 }
 
+h1.inverse,
+h2.inverse,
+h3.inverse,
+h4.inverse,
+h5.inverse,
+h6.inverse {
+  @apply text-white!;
+
+  & em {
+    color: #061125;
+  }
+}
+
 h1 {
   @apply text-5xl md:text-[64px];
 }
