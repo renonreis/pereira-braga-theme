@@ -4,6 +4,14 @@
         'class' =>
             'relative isolate overflow-hidden bg-gradient-to-b from-[#0c1e38] via-[#061125] via-35% to-[#030913] pt-16 pb-16 lg:pt-24 lg:pb-4',
     ]) }}>
+    @php
+        $team = is_array($team ?? null) ? $team : [];
+        $testimonials = is_array($testimonials ?? null) ? $testimonials : [];
+
+        $teamMembers = is_array($team['team_members'] ?? null) ? $team['team_members'] : [];
+        $testimonialsItems = is_array($testimonials['testimonials_items'] ?? null) ? $testimonials['testimonials_items'] : [];
+    @endphp
+
     <div class="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
         {{-- Luz suave abaixo da equipe, separando as duas zonas --}}
         <div
@@ -37,8 +45,9 @@
 
         <div class="team-carousel overflow-hidden px-5" data-team-carousel data-team-marquee-seconds="50">
             <div class="team-carousel-track flex w-max flex-nowrap gap-5" data-team-carousel-track>
-                @foreach ($team['team_members'] as $member)
+                @foreach ($teamMembers as $member)
                     @php
+                        $member = is_array($member) ? $member : [];
                         $image = $member['image'] ?? null;
                         $imageUrl = null;
 
@@ -73,7 +82,10 @@
             <div
                 class="flex flex-nowrap snap-x snap-mandatory touch-pan-x overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:col-span-3 lg:grid lg:grid-cols-3 gap-5 -mx-5 px-5 scroll-px-5 scroll-smooth">
 
-                @foreach ($testimonials['testimonials_items'] as $testimonial)
+                @foreach ($testimonialsItems as $testimonial)
+                    @php
+                        $testimonial = is_array($testimonial) ? $testimonial : [];
+                    @endphp
                     <x-card-testimonial variant="google" author="{{ $testimonial['author'] }}"
                         date="{{ $testimonial['date'] }}" rating="{{ $testimonial['rating'] }}"
                         quote="{{ $testimonial['quote'] }}" href="{{ $testimonial['url'] }}" />
