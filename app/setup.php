@@ -110,6 +110,8 @@ add_action('after_setup_theme', function () {
      */
     add_theme_support('post-thumbnails');
 
+    add_image_size( 'card-service-thumb', 344, 593 );
+
     /**
      * Enable responsive embed support.
      *

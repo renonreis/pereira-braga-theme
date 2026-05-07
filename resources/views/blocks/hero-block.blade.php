@@ -26,8 +26,10 @@
 
         <div
             class="hero-cards-grid flex flex-nowrap lg:justify-center snap-x snap-mandatory touch-pan-x overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:col-span-3 lg:grid lg:grid-cols-2 gap-5 -mx-5 px-6 scroll-px-5 scroll-smooth">
-            <x-card-service variant="blue" title="Auxílio Acidente" category="INSS" href="#" />
-            <x-card-service variant="red" title="Benefício Autista" category="BCP/LOAS" href="#" />
+            @foreach ($cards as $card)
+                <x-card-service variant="{{ $card['variant'] }}" title="{{ $card['title'] }}"
+                    category="{{ $card['category'] }}" href="{{ $card['button']['url'] }}" />
+            @endforeach
         </div>
     </div>
 </section>

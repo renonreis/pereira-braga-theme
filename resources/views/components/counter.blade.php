@@ -17,7 +17,7 @@
         data-counter-duration="{{ (int) $duration }}" data-counter-prefix="{{ $prefix }}"
         data-counter-suffix="{{ $suffix }}"
         {{ $attributes->merge(['class' => "{$base} text-[#445C82] text-[100px] leading-[1.36]"]) }}>
-        {{ $prefix }}{{ (int) $from }}{{ $suffix }}
+        {{ $prefix }}{{ (int) $to }}{{ $suffix }}
     </span>
 
     @if ($label)

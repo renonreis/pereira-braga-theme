@@ -6,27 +6,32 @@
 
       <div class="relative grid grid-cols-1 lg:gap-[18px] lg:grid-cols-2 max-w-[1280px] mx-auto px-5 lg:px-10">
           <div class="flex justify-center pb-5 lg:pb-0">
-              <img class="w-auto" src="https://picsum.photos/seed/picsum/473/520" width="473" height="520" />
+              @if ($image)
+                  <img class="w-full max-w-[529px]" src="{{ $image['url'] }}" width="{{ $image['width'] }}"
+                      height="{{ $image['height'] }}" />
+              @endif
           </div>
           <div class="flex flex-col justify-center lg:items-baseline text-center lg:text-left">
-              <x-heading as="h2" class="text-white! pb-5 hidden lg:block">Quem somos</x-heading>
-              <x-paragraph class="text-[#92A8CC] pb-3">
-                  Somos um escritório especializado em direitos previdenciários, com foco em Auxílio-Acidente e
-                  BPC/LOAS para pessoas com autismo.
-              </x-paragraph>
-              <x-paragraph class="text-[#92A8CC] pb-3">
-                  Há mais de 8 anos, ajudamos trabalhadores e famílias em todo o Brasil a conquistarem benefícios
-                  essenciais com segurança, agilidade e atendimento humanizado.
-              </x-paragraph>
-              <x-paragraph class="text-[#92A8CC] pb-3">
-                  Nosso compromisso é descomplicar o processo, orientar com clareza e garantir que cada cliente tenha
-                  acesso ao que é seu por direito.
-              </x-paragraph>
+              @if ($title)
+                  <x-heading as="h2" asChild class="text-white! pb-5">
+                      {!! $title !!}
+                  </x-heading>
+              @endif
 
-              <x-button class="mt-2">
-                  Fale conosco
-                  <x-icons.whatsapp />
-              </x-button>
+              @if ($content)
+                  <div class="text-[#92A8CC] mb-3">
+                      {!! $content !!}
+                  </div>
+              @endif
+
+              @if ($button)
+                  <x-button asChild class="mt-2">
+                      <a href="{{ $button['url'] }} " target="_blank" class="no-underline!">
+                          {{ $button['text'] }}
+                          <x-icons.whatsapp />
+                      </a>
+                  </x-button>
+              @endif
           </div>
       </div>
   </section>

@@ -15,13 +15,10 @@ class HeroBlock extends Block
     public function with(): array
     {
         return [
-            'title' => get_field('title') ?: 'Transformar realidades.',
-            'subtitle' => get_field('subtitle') ?: 'Devolvendo dignidade a famílias vulneráveis e trabalhadores acidentados.',
-            'suffix' => get_field('suffix') ?: 'Como podemos ajudar hoje?',
-            'cards' => get_field('cards') ?: [
-                ['title' => 'Auxílio Acidente', 'category' => 'INSS', 'image' => null],
-                ['title' => 'Benefício Autista', 'category' => 'CRIANÇA', 'image' => null],
-            ]
+            'title' => get_field('title'),
+            'subtitle' => get_field('subtitle'),
+            'suffix' => get_field('suffix'),
+            'cards' => get_field('cards'),
         ];
     }
 
@@ -48,10 +45,51 @@ class HeroBlock extends Block
                 'toolbar' => 'simple',
                 'media_upload' => 0
             ])
-            ->addRepeater('cards')
-                ->addText('title')
-                ->addText('category')
-                ->addImage('image')
+            ->addRepeater('cards', [
+                'label' => 'Cards de Serviços',
+                'button_label' => 'Adicionar card',
+                'layout' => 'block',
+            ])
+                ->addText('title', [
+                    'label' => 'Título',
+                    'tabs' => 'visual',
+                    'toolbar' => 'simple',
+                    'media_upload' => 0
+                ])
+                ->addText('category', [
+                    'label' => 'Categoria',
+                    'tabs' => 'visual',
+                    'toolbar' => 'simple',
+                    'media_upload' => 0
+                ])
+                ->addSelect('variant', [
+                    'label' => 'Variante',
+                    'choices' => [
+                        'blue' => 'Azul (INSS)',
+                        'red' => 'Vermelho (BCP/LOAS)',
+                    ],
+                ])
+                ->addGroup('button', ['label' => 'Botão'])
+                    ->addText('text', [
+                        'label' => 'Texto',
+                        'tabs' => 'visual',
+                        'toolbar' => 'simple',
+                        'media_upload' => 0
+                    ])
+                    ->addPageLink('url', [
+                        'label' => 'Link da Página',
+                        'tabs' => 'visual',
+                        'allow_null' => 1,
+                        'allow_archives' => 0,
+                        'post_type' => ['page'],
+                    ])
+                ->endGroup()
+                ->addImage('image', [
+                    'label' => 'Imagem de Fundo',
+                    'tabs' => 'visual',
+                    'toolbar' => 'simple',
+                    'media_upload' => 0
+                ])
             ->endRepeater();
 
         return $fields->build();

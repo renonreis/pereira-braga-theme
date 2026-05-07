@@ -15,10 +15,10 @@ class AboutBlock extends Block
     public function with(): array
     {
         return [
-            'title' => get_field('title') ?: 'Quem somos',
-            'content' => get_field('content') ?: '<p>Somos um escritório especializado em direitos previdenciários.</p>',
-            'cta_text' => get_field('cta_text') ?: 'Fale conosco',
-            'image' => get_field('image') ?: null,
+            'image' => get_field('image'),
+            'title' => get_field('title'),
+            'content' => get_field('content'),
+            'button' => get_field('button'),
         ];
     }
 
@@ -27,10 +27,39 @@ class AboutBlock extends Block
         $fields = Builder::make('about_block');
 
         $fields
-            ->addText('title')
-            ->addWysiwyg('content')
-            ->addText('cta_text')
-            ->addImage('image');
+            ->addImage('image', [
+                'label' => 'Imagem',
+                'tabs' => 'visual',
+                'toolbar' => 'simple',
+                'media_upload' => 0
+            ])
+            ->addWysiwyg('title', [
+                'label' => 'Título',
+                'tabs' => 'visual',
+                'toolbar' => 'simple',
+                'media_upload' => 0
+            ])
+            ->addWysiwyg('content', [
+                'label' => 'Conteúdo',
+                'tabs' => 'visual',
+                'toolbar' => 'simple',
+                'media_upload' => 0
+            ])
+            ->addGroup('button', ['label' => 'Botão'])
+                ->addText('text', [
+                    'label' => 'Texto',
+                    'tabs' => 'visual',
+                    'toolbar' => 'simple',
+                    'media_upload' => 0
+                ])
+                ->addUrl('url', [
+                    'label' => 'URL',
+                    'placeholder' => 'https://www.example.com',
+                    'tabs' => 'visual',
+                    'toolbar' => 'simple',
+                    'media_upload' => 0
+                ])
+            ->endGroup();
 
         return $fields->build();
     }

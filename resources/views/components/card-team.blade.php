@@ -29,7 +29,7 @@
     <div class="absolute inset-0 bg-[lightgray]">
         <img class="w-full h-full object-cover object-center transition-transform duration-700" src="{{ $imageSrc }}"
             alt="{{ $imageAlt }}">
-        <div class="absolute inset-0 bg-gradient-to-b from-white to-white/0 to-[50%]"></div>
+        {{-- <div class="absolute inset-0 bg-gradient-to-b from-white to-white/0 to-[50%]"></div> --}}
         <div class="absolute inset-0 bg-gradient-to-b from-[#142A4B]/0 to-[#0F192B]/85"></div>
 
         <div class="{{ $scheme['overlayBurn'] }}"></div>
@@ -39,8 +39,12 @@
 
     <div class="flex flex-col relative {{ $scheme['border'] }} border rounded-[5px] size-full grow justify-end">
         <div class="p-5 border-b {{ $scheme['border'] }}">
-            <x-paragraph class="text-white">{{ $prefix }}</x-paragraph>
-            <x-heading class="text-white! text-[44px]! pb-2 italic!">{{ $name }}</x-heading>
+            @if ($prefix)
+                <x-paragraph class="text-white mb-0!">{{ $prefix }}</x-paragraph>
+            @endif
+            @if ($name)
+                <x-heading class="text-white! text-[44px]! pb-2 italic!">{{ $name }}</x-heading>
+            @endif
         </div>
     </div>
 </div>

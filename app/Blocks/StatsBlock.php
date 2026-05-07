@@ -15,12 +15,9 @@ class StatsBlock extends Block
     public function with(): array
     {
         return [
-            'background_image' => get_field('background_image') ?: null,
-            'items' => get_field('items') ?: [
-                ['number' => '+8', 'label' => 'Anos de Experiência'],
-                ['number' => '+1500', 'label' => 'Vidas transformadas'],
-                ['number' => '+472', 'label' => 'Avaliações no Google'],
-            ],
+            'background_image' => get_field('background_image'),
+            'title' => get_field('title'),
+            'items' => get_field('items'),
         ];
     }
 
@@ -29,10 +26,35 @@ class StatsBlock extends Block
         $fields = Builder::make('stats_block');
 
         $fields
-            ->addImage('background_image')
-            ->addRepeater('items')
-                ->addText('number')
-                ->addText('label')
+            ->addImage('background_image', [
+                'label' => 'Imagem de Fundo',
+                'tabs' => 'visual',
+                'toolbar' => 'simple',
+                'media_upload' => 0
+            ])
+            ->addWysiwyg('title', [
+                'label' => 'Título',
+                'tabs' => 'visual',
+                'toolbar' => 'simple',
+                'media_upload' => 0
+            ])
+            ->addRepeater('items', [
+                'label' => 'Estatísticas',
+                'button_label' => 'Adicionar',
+                'layout' => 'block',
+            ])
+                ->addNumber('number', [
+                    'label' => 'Número',
+                    'tabs' => 'visual',
+                    'toolbar' => 'simple',
+                    'media_upload' => 0
+                ])
+                ->addText('label', [
+                    'label' => 'Label',
+                    'tabs' => 'visual',
+                    'toolbar' => 'simple',
+                    'media_upload' => 0
+                ])
             ->endRepeater();
 
         return $fields->build();
