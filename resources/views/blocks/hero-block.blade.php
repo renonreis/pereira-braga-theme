@@ -1,3 +1,6 @@
+@php
+    $cards = is_array($cards ?? null) ? $cards : [];
+@endphp
 <section {{ $attributes->merge(['class' => 'bg-[#061125] pt-[93px] lg:pt-[117px] lg:pb-24 pb-12']) }}>
     <div
         class="hero-container grid grid-cols-1 lg:gap-[18px] lg:grid-cols-5 max-w-[1280px] mx-auto px-5 lg:px-10 lg:pt-24">
@@ -27,8 +30,12 @@
         <div
             class="hero-cards-grid flex flex-nowrap lg:justify-center snap-x snap-mandatory touch-pan-x overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:col-span-3 lg:grid lg:grid-cols-2 gap-5 -mx-5 px-6 scroll-px-5 scroll-smooth">
             @foreach ($cards as $card)
-                <x-card-service variant="{{ $card['variant'] }}" title="{{ $card['title'] }}"
-                    category="{{ $card['category'] }}" href="{{ $card['button']['url'] }}" />
+                @php
+                    $card = is_array($card) ? $card : [];
+                    $button = is_array($card['button'] ?? null) ? $card['button'] : [];
+                @endphp
+                <x-card-service variant="{{ $card['variant'] ?? 'blue' }}" title="{{ $card['title'] ?? '' }}"
+                    category="{{ $card['category'] ?? '' }}" href="{{ $button['url'] ?? '' }}" />
             @endforeach
         </div>
     </div>

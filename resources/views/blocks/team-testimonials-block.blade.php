@@ -5,11 +5,27 @@
             'relative isolate overflow-hidden bg-gradient-to-b from-[#0c1e38] via-[#061125] via-35% to-[#030913] pt-16 pb-16 lg:pt-24 lg:pb-4',
     ]) }}>
     @php
-        $team = is_array($team ?? null) ? $team : [];
-        $testimonials = is_array($testimonials ?? null) ? $testimonials : [];
+        $team = array_merge(
+            [
+                'title' => '',
+                'subtitle' => '',
+                'team_members' => [],
+            ],
+            is_array($team ?? null) ? $team : [],
+        );
+        $testimonials = array_merge(
+            [
+                'title' => '',
+                'subtitle' => '',
+                'testimonials_items' => [],
+            ],
+            is_array($testimonials ?? null) ? $testimonials : [],
+        );
 
         $teamMembers = is_array($team['team_members'] ?? null) ? $team['team_members'] : [];
-        $testimonialsItems = is_array($testimonials['testimonials_items'] ?? null) ? $testimonials['testimonials_items'] : [];
+        $testimonialsItems = is_array($testimonials['testimonials_items'] ?? null)
+            ? $testimonials['testimonials_items']
+            : [];
     @endphp
 
     <div class="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
@@ -36,7 +52,7 @@
                     </x-heading>
                 @endif
                 @if ($team['subtitle'])
-                    <x-paragraph class="text-[#92A8CC] pb-14 text-center max-w-[995px] mx-auto">
+                    <x-paragraph as="p" class="text-[#92A8CC] pb-14 text-center max-w-[995px] mx-auto">
                         {!! $team['subtitle'] !!}
                     </x-paragraph>
                 @endif
@@ -59,7 +75,7 @@
                             $imageUrl = $image;
                         }
                     @endphp
-                    <x-card-team variant="blue" prefix="{{ $member['role'] }}" name="{{ $member['name'] }}"
+                    <x-card-team variant="blue" prefix="{{ $member['role'] ?? '' }}" name="{{ $member['name'] ?? '' }}"
                         class="shrink-0" :imageSrc="$imageUrl" />
                 @endforeach
             </div>
@@ -73,7 +89,7 @@
                     </x-heading>
                 @endif
                 @if ($testimonials['subtitle'])
-                    <x-paragraph class="text-[#92A8CC] pb-14 text-center max-w-[600px] mx-auto">
+                    <x-paragraph as="p" class="text-[#92A8CC] pb-14 text-center max-w-[600px] mx-auto">
                         {!! $testimonials['subtitle'] !!}
                     </x-paragraph>
                 @endif
@@ -86,9 +102,9 @@
                     @php
                         $testimonial = is_array($testimonial) ? $testimonial : [];
                     @endphp
-                    <x-card-testimonial variant="google" author="{{ $testimonial['author'] }}"
-                        date="{{ $testimonial['date'] }}" rating="{{ $testimonial['rating'] }}"
-                        quote="{{ $testimonial['quote'] }}" href="{{ $testimonial['url'] }}" />
+                    <x-card-testimonial variant="google" author="{{ $testimonial['author'] ?? '' }}"
+                        date="{{ $testimonial['date'] ?? '' }}" rating="{{ $testimonial['rating'] ?? '' }}"
+                        quote="{{ $testimonial['quote'] ?? '' }}" href="{{ $testimonial['url'] ?? '' }}" />
                 @endforeach
             </div>
         </div>

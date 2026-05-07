@@ -37,9 +37,7 @@ class TeamTestimonialsBlock extends Block
                 ])
                 ->addTextarea('subtitle', [
                     'label' => 'Subtítulo',
-                    'tabs' => 'visual',
-                    'toolbar' => 'simple',
-                    'media_upload' => 0
+                    'new_lines' => '',
                 ])
                 ->addRepeater('team_members', [
                     'label' => 'Equipe',
@@ -48,7 +46,7 @@ class TeamTestimonialsBlock extends Block
                 ])
                     ->addImage('image', [
                         'label' => 'Imagem',
-                        'return_format' => 'string',
+                        'return_format' => 'url',
                     ])
                     ->addText('role', [
                         'label' => 'Cargo',
@@ -70,9 +68,7 @@ class TeamTestimonialsBlock extends Block
                 ])
                 ->addTextarea('subtitle', [
                     'label' => 'Subtítulo',
-                    'tabs' => 'visual',
-                    'toolbar' => 'simple',
-                    'media_upload' => 0
+                    'new_lines' => '',
                 ])
                 ->addRepeater('testimonials_items', [
                     'label' => 'Depoimentos',
@@ -81,35 +77,30 @@ class TeamTestimonialsBlock extends Block
                 ])
                     ->addText('author', [
                         'label' => 'Autor',
-                        'tabs' => 'visual',
-                        'toolbar' => 'simple',
-                        'media_upload' => 0
                     ])
                     ->addDatePicker('date', [
                         'label' => 'Data',
-                        'tabs' => 'visual',
-                        'dateFormat' => 'd/m/Y',
-                        'displayFormat' => 'd/m/Y',
-                        'firstDay' => 1,
-                        'allowInput' => true,
-                        'returnFormat' => 'd/m/Y',
+                        'display_format' => 'd/m/Y',
+                        'return_format' => 'd/m/Y',
+                        'first_day' => 1,
                     ])
                     ->addSelect('rating', [
                         'label' => 'Avaliação',
-                        'choices' => range(1, 5),
-                        'default_value' => 5,
+                        'choices' => [
+                            '1' => '1',
+                            '2' => '2',
+                            '3' => '3',
+                            '4' => '4',
+                            '5' => '5',
+                        ],
+                        'default_value' => '5',
                     ])
-                    ->addTextArea('quote', [
+                    ->addTextarea('quote', [
                         'label' => 'Depoimento',
-                        'tabs' => 'visual',
-                        'toolbar' => 'simple',
-                        'media_upload' => 0
+                        'rows' => 4,
                     ])
                     ->addUrl('url', [
                         'label' => 'URL',
-                        'tabs' => 'visual',
-                        'toolbar' => 'simple',
-                        'media_upload' => 0
                     ])
                 ->endRepeater()
             ->endGroup();

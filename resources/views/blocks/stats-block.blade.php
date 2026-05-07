@@ -1,3 +1,6 @@
+  @php
+      $items = is_array($items ?? null) ? $items : [];
+  @endphp
   <section
       {{ $attributes->merge(['id' => 'stats', 'class' => 'relative bg-[#061125] pt-16 pb-16 lg:pt-24 lg:pb-24 border-y border-[#FFFFFF]/50']) }}>
       <div class="absolute inset-0 z-0 top-4 bottom-4">
@@ -22,7 +25,10 @@
 
           <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-5">
               @foreach ($items as $item)
-                  <x-counter :to="$item['number']" prefix="+" label="{{ $item['label'] }}" />
+                  @php
+                      $item = is_array($item) ? $item : [];
+                  @endphp
+                  <x-counter :to="$item['number'] ?? 0" prefix="+" label="{{ $item['label'] ?? '' }}" />
               @endforeach
           </div>
       </div>
