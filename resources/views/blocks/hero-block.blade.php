@@ -34,8 +34,9 @@
                     $card = is_array($card) ? $card : [];
                     $button = is_array($card['button'] ?? null) ? $card['button'] : [];
                 @endphp
-                <x-card-service variant="{{ $card['variant'] ?? 'blue' }}" title="{{ $card['title'] ?? '' }}"
-                    category="{{ $card['category'] ?? '' }}" href="{{ $button['url'] ?? '' }}" />
+                <x-card-service variant="{{ $card['variant'] }}" title="{{ $card['title'] }}"
+                    category="{{ $card['category'] }}" href="{{ $button['url'] }}"
+                    imageSrc="{{ $card['image']['url'] }}" buttonText="{{ $button['text'] }}" />
             @endforeach
         </div>
     </div>

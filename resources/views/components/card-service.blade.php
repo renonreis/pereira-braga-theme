@@ -5,6 +5,7 @@
     'href' => '#',
     'imageSrc' => 'https://picsum.photos/seed/picsum/345/600',
     'imageAlt' => '',
+    'buttonText' => 'Saiba mais',
 ])
 
 @php
@@ -42,8 +43,10 @@
             'group flex flex-col items-start min-w-[270px] min-h-[465px] md:min-h-[600px] p-5 rounded-[5px] relative overflow-hidden cursor-pointer',
     ]) }}>
     <div class="absolute inset-0 bg-[lightgray]">
-        <img class="w-full h-full object-cover object-center transition-transform duration-700" src="{{ $imageSrc }}"
-            alt="{{ $imageAlt }}">
+        @if ($imageSrc)
+            <img class="w-full h-full object-cover object-center transition-transform duration-700"
+                src="{{ $imageSrc }}" alt="{{ $imageAlt }}">
+        @endif
         <div class="absolute inset-0 bg-gradient-to-b from-white to-white/0 to-[50%]"></div>
         <div class="absolute inset-0 bg-gradient-to-b from-[#142A4B]/0 to-[#0F192B]/85"></div>
 
@@ -55,13 +58,21 @@
 
     <div class="flex flex-col relative {{ $scheme['border'] }} border rounded-[5px] size-full grow justify-end">
         <div class="p-5 border-b {{ $scheme['border'] }}">
-            <x-heading class="text-white! text-[44px]! pb-2 italic!">{{ $title }}</x-heading>
-            <x-paragraph class="text-white">{{ $category }}</x-paragraph>
+            @if ($title)
+                <x-heading class="text-white! text-[44px]! pb-2 italic!">
+                    {{ $title }}
+                </x-heading>
+            @endif
+            @if ($category)
+                <x-paragraph class="text-white">{{ $category }}</x-paragraph>
+            @endif
         </div>
 
-        <x-link href="{{ $href }}" variant="hero" class="{{ $scheme['linkClass'] }}">
-            saiba mais
-            <x-icons.arrowRightCircle />
-        </x-link>
+        @if ($href)
+            <x-link href="{{ $href }}" variant="hero" class="{{ $scheme['linkClass'] }}">
+                {{ $buttonText }}
+                <x-icons.arrowRightCircle />
+            </x-link>
+        @endif
     </div>
 </div>
