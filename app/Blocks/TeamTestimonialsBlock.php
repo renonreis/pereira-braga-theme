@@ -11,6 +11,7 @@ class TeamTestimonialsBlock extends Block
     public $description = 'Seção de membros da equipe e avaliações de clientes.';
     public $category = 'pereira-braga-blocks';
     public $icon = 'groups';
+    public $usePostMeta = true;
 
     public function with(): array
     {
